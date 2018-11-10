@@ -14,6 +14,7 @@ public class XrayControler : MonoBehaviour {
     public Material PostProcessMat;
     public Vector2 ImageSize;
     Vector2 normlizedSize;
+    private RenderTexture xrayTar;
 
     public void XrayPreview()
     {
@@ -27,13 +28,18 @@ public class XrayControler : MonoBehaviour {
     }
     // Use this for initialization
     void OnEnable () {
-        xrayTarget = new RenderTexture(Screen.width, Screen.height, 24);
+        xrayTar = new RenderTexture(Screen.width, Screen.height, 24);
 
-        xrayCamera.targetTexture = xrayTarget;
+        xrayCamera.targetTexture = xrayTar;
 
        
         if (replacementShader != null)
             xrayCamera.SetReplacementShader(replacementShader, "Xray");
+
+        if (PostProcessMat != null)
+        {
+            PostProcessMat.SetTexture("_xrayRT", xrayTar);
+        }
 
     }
 
