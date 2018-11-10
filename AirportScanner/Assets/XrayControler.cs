@@ -17,7 +17,7 @@ public class XrayControler : MonoBehaviour {
     Vector2 normalizedScale;
     public static bool ShowXray = true;
     private RenderTexture xrayTar;
-    public float xrayZoom = 1.0f;
+    public float xrayZoom = 2.0f;
 
     public void XrayPreview()
     {
@@ -48,7 +48,6 @@ public class XrayControler : MonoBehaviour {
 
     private void Start()
     {
-        
       // ImageSize = new Vector2(zoomTarget.width, zoomTarget.width);
       normlizedSize =new Vector2(((float)(Screen.width)) / ImageSize.x, ((float)(Screen.height)) / ImageSize.y);
        // Vector2 normlizedSize = new Vector2( ImageSize.x/ Screen.width, ImageSize.y/ Screen.height);
@@ -65,7 +64,7 @@ public class XrayControler : MonoBehaviour {
             {
                 PostProcessMat.SetTexture("_zoomMask", zoomTarget);
             }
-            PostProcessMat.SetTextureScale("_xrayRT", new Vector2(1.0f, 1.0f));
+            PostProcessMat.SetTextureScale("_xrayRT", new Vector2(1.0f/ xrayZoom, 1.0f / xrayZoom));
         }
         
 
@@ -83,12 +82,13 @@ public class XrayControler : MonoBehaviour {
 
             Vector2 mousePos = new Vector2(Camera.main.ScreenToViewportPoint(Input.mousePosition).x, Camera.main.ScreenToViewportPoint(Input.mousePosition).y );
             Vector2 mousePosFromCenter = (mousePos * 2.0f) - new Vector2(1.0f, 1.0f);
+            Vector2 offset = mousePosFromCenter * (1.0f / xrayZoom);
             float offsetX = normalizedScale.x * mousePosFromCenter.x;
             float offsetY = normalizedScale.y * mousePosFromCenter.y;
 
-            Debug.Log(offsetX);
+            Debug.Log(mousePosFromCenter.x);
 
-            Vector4 MouseCoords = new Vector4(mousePos.x*(normlizedSize.x)+ offsetX, mousePos.y * (normlizedSize.y) + offsetY, 0.0f,0.0f);
+            Vector4 MouseCoords = new Vector4(mousePos.x*(normlizedSize.x)+ offsetX, mousePos.y * (normlizedSize.y) + offsetY, (mousePos.x/(-xrayZoom)), (mousePos.y / (-xrayZoom)));
             PostProcessMat.SetVector("_MoouseCoords", MouseCoords);
         }
             
