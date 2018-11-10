@@ -35,6 +35,7 @@ public class Case : MonoBehaviour {
         this.contrabands = new List<Contraband>(contrabands);
         for (int i = 0; i < contrabands.Length; i++)
         {
+            spawnPositions[i].transform.localScale = new Vector3( 1/spawnPositions[i].parent.localScale.x, 1/spawnPositions[i].parent.localScale.y, 1/spawnPositions[i].parent.localScale.z);
             Instantiate(SpawnManager.Instance.contrabandPrefabs[(int)contrabands[i]],spawnPositions[i]);
         }
 
@@ -122,9 +123,11 @@ public class Case : MonoBehaviour {
             if (nextWaypoint.MatchingPosition(transform.position))
             {
                 nextWaypoint = currentPath.GetNextWaypoint(nextWaypoint);
-                if (nextWaypoint == null)
+                if (nextWaypoint == null )
                 {
+                    if(CaseSent != null)
                     CaseSent(contrabands.ToArray(), this);
+                    Destroy(gameObject);
                 }
             }
         }
