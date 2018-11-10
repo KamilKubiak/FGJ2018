@@ -34,8 +34,21 @@ public class WaypointManager : Singleton<WaypointManager> {
         }
     }
 
-    public Path RetrivePath()
+
+    public Path GetFreeStart()
     {
+        var freeStarts = new List<Path>();
+        foreach (var item in paths)
+        {
+            if (!item.waypoints[0].Occupied)
+            {
+                freeStarts.Add(item);
+            }
+        }
+        if (freeStarts.Count>0)
+        {
+            return freeStarts[Random.Range(0, freeStarts.Count)];
+        }
         return null;
 
     }

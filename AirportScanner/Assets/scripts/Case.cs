@@ -8,7 +8,7 @@ public class Case : MonoBehaviour {
     public event CaseActions CaseDestroyed;
     public event CaseActions CaseSent;
     public Transform[] spawnPositions;
-
+    float scale = 1;
     List<Contraband> contrabands;
 
     Path currentPath;
@@ -35,7 +35,8 @@ public class Case : MonoBehaviour {
         this.contrabands = new List<Contraband>(contrabands);
         for (int i = 0; i < contrabands.Length; i++)
         {
-            Instantiate(SpawnManager.Instance.contrabandPrefabs[(int)contrabands[i]],spawnPositions[i]);
+            spawnPositions[i].transform.localScale = new Vector3(scale / spawnPositions[i].parent.localScale.x, scale / spawnPositions[i].parent.localScale.y, scale / spawnPositions[i].parent.localScale.z);
+            if(SpawnManager.Instance.contrabandPrefabs.Count>(int)contrabands[i])Instantiate(SpawnManager.Instance.contrabandPrefabs[(int)contrabands[i]],spawnPositions[i]);
         }
 
     }
@@ -46,6 +47,7 @@ public class Case : MonoBehaviour {
         {
             return;
         }
+        XrayControler.ShowXray = false;
         CaseHeld = true;
         LiftFromConveyor();
         Waypoint.WaypointClicked += Waypoint_WaypointClicked;
@@ -56,6 +58,7 @@ public class Case : MonoBehaviour {
     {
         Waypoint.WaypointClicked -= Waypoint_WaypointClicked;
         CaseHeld = false;
+        XrayControler.ShowXray = true;
         ContrabandTrash.OnTrashClicked -= ContrabandTrash_OnTrashClicked;
         if (CaseDestroyed !=null)
         {
@@ -79,6 +82,7 @@ public class Case : MonoBehaviour {
             if (!wp.Occupied)
             {
                 CaseHeld = false;
+                XrayControler.ShowXray = true;
                 var path = WaypointManager.Instance.FindWaypointPath(wp);
                 PlaceCaseOnPath(path, wp);
                 ContrabandTrash.OnTrashClicked -= ContrabandTrash_OnTrashClicked;
@@ -122,9 +126,11 @@ public class Case : MonoBehaviour {
             if (nextWaypoint.MatchingPosition(transform.position))
             {
                 nextWaypoint = currentPath.GetNextWaypoint(nextWaypoint);
-                if (nextWaypoint == null)
+                if (nextWaypoint == null )
                 {
+                    if(CaseSent != null)
                     CaseSent(contrabands.ToArray(), this);
+                    Destroy(gameObject);
                 }
             }
         }

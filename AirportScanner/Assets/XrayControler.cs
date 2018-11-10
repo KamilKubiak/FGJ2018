@@ -14,6 +14,7 @@ public class XrayControler : MonoBehaviour {
     public Material PostProcessMat;
     public Vector2 ImageSize;
     Vector2 normlizedSize;
+    public static bool ShowXray = true;
     private RenderTexture xrayTar;
 
     public void XrayPreview()
@@ -86,7 +87,9 @@ public class XrayControler : MonoBehaviour {
 
     void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
-        if(PostProcessMat!=null)
+        if(PostProcessMat!=null&&ShowXray)
             Graphics.Blit(src, dest, PostProcessMat);
+        else
+            Graphics.Blit(src, dest);
     }
 }
