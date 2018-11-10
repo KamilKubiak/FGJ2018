@@ -56,6 +56,14 @@ public enum Contraband
     ZlotoIDiamenty
 }
 
+public enum Destination
+{
+    Exinia,
+    Ygrandia,
+    Zeliland,
+    Wouffia
+}
+
 public class LegalManager : Singleton<LegalManager>
 {
     public List<Contraband> AllContraband;
@@ -71,14 +79,7 @@ public class LegalManager : Singleton<LegalManager>
     public float ZelilandListLevelModifier;
     public float WouffiaListLevelModifier;
 
-    int level;
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-            GenerateAllContraband(level++);
-    }
-
+    
     public void GenerateAllContraband(int level)
     {
         if (level < 1) AllContraband = new List<Contraband>();
