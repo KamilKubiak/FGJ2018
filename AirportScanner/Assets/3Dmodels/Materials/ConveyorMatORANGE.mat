@@ -87,4 +87,4 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 0.6, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
-    - _XrayColor: {r: 0.3081747, g: 0.4343635, b: 0.5588235, a: 0.447}
+    - _XrayColor: {r: 0.100346014, g: 0.16828546, b: 0.2352941, a: 0.178}
