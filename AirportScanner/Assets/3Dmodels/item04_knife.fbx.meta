@@ -16,6 +16,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: No Name
     second: {fileID: 2100000, guid: 28c682f4fae30384fa3cced99d7cf6ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: itemMetal01
+    second: {fileID: 2100000, guid: bec71708a80c78640aff5ce2e60180b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: itemWood01
+    second: {fileID: 2100000, guid: cba2fc6aada81d747b5e82b7033cc861, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -53,7 +63,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

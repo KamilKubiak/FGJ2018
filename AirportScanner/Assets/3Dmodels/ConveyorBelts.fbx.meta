@@ -76,13 +76,28 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: ConveyorBeltMat01.001
+    second: {fileID: 2100000, guid: e92f2952b0ecbfe4d9e6df2334ef199c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: ConveyorMat01
     second: {fileID: 2100000, guid: 97d5a034d98ced54ea4972a26aa3c037, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: ConveyorMat01.001
+    second: {fileID: 2100000, guid: 8722bb309d75592469a201c559d75379, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: ConveyorMat02
     second: {fileID: 2100000, guid: 54e73bfcd009a204d867a7dd730ba701, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ConveyorMat02.001
+    second: {fileID: 2100000, guid: d1d70d1aa207d7d47aaecbd6f2d1a815, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -120,7 +135,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

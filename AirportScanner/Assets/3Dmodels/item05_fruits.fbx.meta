@@ -71,6 +71,26 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: fruitGreenMat
+    second: {fileID: 2100000, guid: 1432cbdd3a854d8488fc246044a4969d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: fruitOrangeMat
+    second: {fileID: 2100000, guid: 24581e454644f0d439e32068b7710a80, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: fruitRedMat
+    second: {fileID: 2100000, guid: 060932e2b0d81234fa4fdc9796f8ef24, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: fruitYellowMat
+    second: {fileID: 2100000, guid: 5cc906e03c7c0a943ab72c09a0666f25, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: wire_214227153.005
     second: {fileID: 2100000, guid: 3372c41bfbfa3ea4d8e3bb3ac1f3f215, type: 2}
   - first:
@@ -165,7 +185,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

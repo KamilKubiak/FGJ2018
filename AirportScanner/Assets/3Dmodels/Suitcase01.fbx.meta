@@ -26,6 +26,26 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: SuitcasePlasticMat01
     second: {fileID: 2100000, guid: 78ce5fd827a329c4d8c1095deef5c54c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: suitcase01_metal_mat
+    second: {fileID: 2100000, guid: aa87edbefcad5a848a27ecb7c640bf12, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: suitcase01_plastic1_mat
+    second: {fileID: 2100000, guid: ca4bc0ed82e20a84280dd864c22edb54, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: suitcase01_plastic2_mat
+    second: {fileID: 2100000, guid: 711a4e5cc3b4374458985bbaf039e83c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: suitcase01_shell_mat
+    second: {fileID: 2100000, guid: 6c0432073348a8d46837763c43bd9565, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -63,7 +83,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
