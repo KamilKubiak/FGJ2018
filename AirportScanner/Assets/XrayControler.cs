@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class XrayControler : MonoBehaviour {
 
     public Camera xrayCamera;
@@ -31,11 +31,17 @@ public class XrayControler : MonoBehaviour {
     }
     // Use this for initialization
     void OnEnable () {
-        xrayTar = new RenderTexture((int)(Screen.width * xrayZoom), (int)(Screen.height * xrayZoom), 24);
+        
+
+    }
+
+    private void Start()
+    {
+        xrayTar = new RenderTexture((int)(Camera.main.pixelWidth * xrayZoom), (int)(Camera.main.pixelHeight * xrayZoom), 24);
 
         xrayCamera.targetTexture = xrayTar;
 
-       
+
         if (replacementShader != null)
             xrayCamera.SetReplacementShader(replacementShader, "Xray");
 
@@ -43,15 +49,10 @@ public class XrayControler : MonoBehaviour {
         {
             PostProcessMat.SetTexture("_xrayRT", xrayTar);
         }
-
-    }
-
-    private void Start()
-    {
-      // ImageSize = new Vector2(zoomTarget.width, zoomTarget.width);
-      normlizedSize =new Vector2(((float)(Screen.width)) / ImageSize.x, ((float)(Screen.height)) / ImageSize.y);
+        // ImageSize = new Vector2(zoomTarget.width, zoomTarget.width);
+        normlizedSize =new Vector2(((float)(Camera.main.pixelWidth)) / ImageSize.x, ((float)(Camera.main.pixelHeight)) / ImageSize.y);
        // Vector2 normlizedSize = new Vector2( ImageSize.x/ Screen.width, ImageSize.y/ Screen.height);
-         normalizedScale = new Vector2((ImageSize.x / Screen.width/2.0f)* normlizedSize.x,( ImageSize.y / Screen.height/2.0f) * normlizedSize.y);
+         normalizedScale = new Vector2((ImageSize.x / Camera.main.pixelWidth/2.0f )* normlizedSize.x,( ImageSize.y / Camera.main.pixelHeight / 2.0f) * normlizedSize.y);
 
 
         Vector4 sizeOffset = new Vector4(normlizedSize.x, normlizedSize.y, normalizedScale.x, normalizedScale.y);
@@ -86,10 +87,12 @@ public class XrayControler : MonoBehaviour {
             float offsetX = normalizedScale.x * mousePosFromCenter.x;
             float offsetY = normalizedScale.y * mousePosFromCenter.y;
 
-            Debug.Log(mousePosFromCenter.x);
+            Debug.Log(mousePos.x);
 
-            Vector4 MouseCoords = new Vector4(mousePos.x*(normlizedSize.x)+ offsetX, mousePos.y * (normlizedSize.y) + offsetY, (mousePos.x/(-xrayZoom)), (mousePos.y / (-xrayZoom)));
+            Vector4 MouseCoords = new Vector4(mousePos.x*(normlizedSize.x), mousePos.y * (normlizedSize.y), 0.0f, 0.0f);
             PostProcessMat.SetVector("_MoouseCoords", MouseCoords);
+
+            PostProcessMat.SetTextureOffset("_xrayRT", new Vector2((1.0f - 1.0f / xrayZoom) * mousePos.x, (1.0f - 1.0f / xrayZoom) * mousePos.y));
         }
             
     }
