@@ -31,7 +31,7 @@ public enum Contraband
     Money,
     Macarel,
     Nuts,
-    Nougat,
+    /*Nougat,
     Oak,
     OktoberfestBeer,
     PokemonPlushie,
@@ -53,7 +53,7 @@ public enum Contraband
     YetiFoot,
     YellowSnow,
     ZanzibarianCandies,
-    ZlotoIDiamenty
+    ZlotoIDiamenty*/
 }
 
 public enum Destination
