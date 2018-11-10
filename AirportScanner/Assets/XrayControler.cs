@@ -14,6 +14,7 @@ public class XrayControler : MonoBehaviour {
     public Material PostProcessMat;
     public Vector2 ImageSize;
     Vector2 normlizedSize;
+    Vector2 normalizedScale;
     public static bool ShowXray = true;
     private RenderTexture xrayTar;
     public float xrayZoom = 1.0f;
@@ -47,10 +48,11 @@ public class XrayControler : MonoBehaviour {
 
     private void Start()
     {
-       // ImageSize = new Vector2(zoomTarget.width, zoomTarget.width);
-      normlizedSize =new Vector2(((float)(Screen.width/2)) / ImageSize.x, ((float)(Screen.height/2)) / ImageSize.y);
+        
+      // ImageSize = new Vector2(zoomTarget.width, zoomTarget.width);
+      normlizedSize =new Vector2(((float)(Screen.width)) / ImageSize.x, ((float)(Screen.height)) / ImageSize.y);
        // Vector2 normlizedSize = new Vector2( ImageSize.x/ Screen.width, ImageSize.y/ Screen.height);
-        Vector2 normalizedScale = new Vector2((ImageSize.x / Screen.width/2.0f)* normlizedSize.x,( ImageSize.y / Screen.height/2.0f) * normlizedSize.y);
+         normalizedScale = new Vector2((ImageSize.x / Screen.width/2.0f)* normlizedSize.x,( ImageSize.y / Screen.height/2.0f) * normlizedSize.y);
 
 
         Vector4 sizeOffset = new Vector4(normlizedSize.x, normlizedSize.y, normalizedScale.x, normalizedScale.y);
@@ -63,8 +65,9 @@ public class XrayControler : MonoBehaviour {
             {
                 PostProcessMat.SetTexture("_zoomMask", zoomTarget);
             }
+            PostProcessMat.SetTextureScale("_xrayRT", new Vector2(1.0f, 1.0f));
         }
-            
+        
 
     }
 
@@ -78,9 +81,14 @@ public class XrayControler : MonoBehaviour {
         if (PostProcessMat != null)
         {
 
-            Vector2 mousePos = new Vector2(Camera.main.ScreenToViewportPoint(Input.mousePosition).x, Camera.main.ScreenToViewportPoint(Input.mousePosition).y);
+            Vector2 mousePos = new Vector2(Camera.main.ScreenToViewportPoint(Input.mousePosition).x, Camera.main.ScreenToViewportPoint(Input.mousePosition).y );
+            Vector2 mousePosFromCenter = (mousePos * 2.0f) - new Vector2(1.0f, 1.0f);
+            float offsetX = normalizedScale.x * mousePosFromCenter.x;
+            float offsetY = normalizedScale.y * mousePosFromCenter.y;
 
-            Vector4 MouseCoords = new Vector4(mousePos.x*normlizedSize.x, mousePos.y * normlizedSize.y, 0.0f, 0.0f);
+            Debug.Log(offsetX);
+
+            Vector4 MouseCoords = new Vector4(mousePos.x*(normlizedSize.x)+ offsetX, mousePos.y * (normlizedSize.y) + offsetY, 0.0f,0.0f);
             PostProcessMat.SetVector("_MoouseCoords", MouseCoords);
         }
             
