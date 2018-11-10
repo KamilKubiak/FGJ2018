@@ -17,6 +17,7 @@ public class Path{
         return currentIndex < waypoints.Count ? waypoints[currentIndex] : null;
     }
 
+    public Destination destination;
 
     public bool IsWaypointOnPath(Waypoint wp)
     {

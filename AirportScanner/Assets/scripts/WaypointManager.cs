@@ -34,5 +34,12 @@ public class WaypointManager : Singleton<WaypointManager> {
         }
     }
 
+    public Path RetrivePath()
+    {
+        return null;
+
+    }
+
+
 }
 
