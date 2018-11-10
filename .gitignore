@@ -4,6 +4,7 @@
 [Bb]uild/
 [Bb]uilds/
 Assets/AssetStoreTools*
+AirportScanner/Assets/AmplifyShaderEditor*
 
 # Visual Studio cache directory
 .vs/
@@ -34,3 +35,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+AirportScanner/Assets/scenes/localScene.unity
+AirportScanner/Assets/scenes/localScene.unity.meta
