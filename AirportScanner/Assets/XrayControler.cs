@@ -16,6 +16,7 @@ public class XrayControler : MonoBehaviour {
     Vector2 normlizedSize;
     public static bool ShowXray = true;
     private RenderTexture xrayTar;
+    public float xrayZoom = 1.0f;
 
     public void XrayPreview()
     {
@@ -29,7 +30,7 @@ public class XrayControler : MonoBehaviour {
     }
     // Use this for initialization
     void OnEnable () {
-        xrayTar = new RenderTexture(Screen.width, Screen.height, 24);
+        xrayTar = new RenderTexture((int)(Screen.width * xrayZoom), (int)(Screen.height * xrayZoom), 24);
 
         xrayCamera.targetTexture = xrayTar;
 
@@ -46,8 +47,8 @@ public class XrayControler : MonoBehaviour {
 
     private void Start()
     {
-        ImageSize = new Vector2(zoomTarget.width, zoomTarget.width);
-      normlizedSize =new Vector2(((float)(Screen.width)) / ImageSize.x, ((float)(Screen.height)) / ImageSize.y);
+       // ImageSize = new Vector2(zoomTarget.width, zoomTarget.width);
+      normlizedSize =new Vector2(((float)(Screen.width/2)) / ImageSize.x, ((float)(Screen.height/2)) / ImageSize.y);
        // Vector2 normlizedSize = new Vector2( ImageSize.x/ Screen.width, ImageSize.y/ Screen.height);
         Vector2 normalizedScale = new Vector2((ImageSize.x / Screen.width/2.0f)* normlizedSize.x,( ImageSize.y / Screen.height/2.0f) * normlizedSize.y);
 

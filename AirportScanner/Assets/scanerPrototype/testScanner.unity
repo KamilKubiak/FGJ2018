@@ -682,9 +682,10 @@ MonoBehaviour:
   xrayCamera: {fileID: 1783828341}
   replacementShader: {fileID: 4800000, guid: bfa189884bb0b6746a01b89527f98fb7, type: 3}
   xrayTarget: {fileID: 162572395}
-  zoomTarget: {fileID: 2800000, guid: c0fa58091049bd24394fa15b0b6d4c5a, type: 3}
-  PostProcessMat: {fileID: 2100000, guid: 4d60d6f8ef5e0be44b061807c5964074, type: 2}
-  ImageSize: {x: 256, y: 256}
+  zoomTarget: {fileID: 2800000, guid: 66e159d973998754c940e091ae8d9448, type: 3}
+  PostProcessMat: {fileID: 2100000, guid: fcb14280b54acd1418eea7ee9ff46bbf, type: 2}
+  ImageSize: {x: 400, y: 300}
+  xrayZoom: 1
 --- !u!1 &935052650
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,33 +804,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4fc3f55fce91d4769a6dda11e2bd47ce, type: 2}
   m_IsPrefabParent: 0
---- !u!84 &1063639699
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 0
-  m_Height: 0
-  m_AntiAliasing: 1
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1177890355
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,6 +947,33 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 8aad1a00ff07b7044b06b3abe6db20c7, type: 3}
   m_PrefabInternal: {fileID: 10734824}
+--- !u!84 &1589991301
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 1628
+  m_Height: 1122
+  m_AntiAliasing: 1
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1783828336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,7 +1043,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 1063639699}
+  m_TargetTexture: {fileID: 1589991301}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
