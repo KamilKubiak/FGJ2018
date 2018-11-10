@@ -78,8 +78,7 @@ public class LegalManager : Singleton<LegalManager>
     public float YgrandiaListLevelModifier;
     public float ZelilandListLevelModifier;
     public float WouffiaListLevelModifier;
-
-    
+        
     public void GenerateAllContraband(int level)
     {
         if (level < 1) AllContraband = new List<Contraband>();
