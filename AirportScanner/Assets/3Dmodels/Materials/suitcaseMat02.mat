@@ -83,8 +83,8 @@ Material:
     - __dirty: 0
     - _fresnel_mul: 0.5
     - _speed: 1
-    - _thicknes_mul: 1
+    - _thicknes_mul: 0.12
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
-    - _XrayColor: {r: 0.4983546, g: 0.8308824, b: 0.042765997, a: 0.447}
+    - _XrayColor: {r: 0.23120227, g: 0.33823532, b: 0.08455883, a: 0.103}
