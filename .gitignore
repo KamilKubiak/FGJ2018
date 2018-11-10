@@ -35,3 +35,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+AirportScanner/Assets/scenes/localScene.unity
+AirportScanner/Assets/scenes/localScene.unity.meta
