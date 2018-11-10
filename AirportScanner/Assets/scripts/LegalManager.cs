@@ -81,7 +81,7 @@ public class LegalManager : Singleton<LegalManager>
 
     public void GenerateAllContraband(int level)
     {
-        AllContraband = new List<Contraband>();
+        if (level < 1) AllContraband = new List<Contraband>();
         IllegalContraband = new List<Contraband>();
         ToExinia = new List<Contraband>();
         ToYgradnia = new List<Contraband>();
@@ -89,21 +89,28 @@ public class LegalManager : Singleton<LegalManager>
         ToWouffia = new List<Contraband>();
 
         int maxCapacityTemp = 7 + Mathf.FloorToInt(level * FullListLevelModifier);
-        int roof = (maxCapacityTemp < System.Enum.GetValues(typeof(Contraband)).Length)
-            ? maxCapacityTemp : System.Enum.GetValues(typeof(Contraband)).Length;
+        int roof = maxCapacityTemp - AllContraband.Count;
 
         for (int i = 0; i < roof; i++)
         {
+            if (AllContraband.Count == (int)System.Enum.GetValues(typeof(Contraband)).Length) break;
+
             Contraband toAdd = (Contraband)Random.Range
                 (0, (int)System.Enum.GetValues(typeof(Contraband)).Length - 1);
 
-            while (AllContraband.Contains(toAdd))
-            {
-                toAdd = (Contraband)Random.Range(0, (int)System.Enum.GetValues(typeof(Contraband)).Length - 1);
-            }
+            if (AllContraband.Count + 1 < (int)System.Enum.GetValues(typeof(Contraband)).Length)
+                while (AllContraband.Contains(toAdd))
+                {
+                    toAdd = (Contraband)Random.Range(0, (int)System.Enum.GetValues(typeof(Contraband)).Length - 1);
+                }
+            else if (AllContraband.Count + 1 == (int)System.Enum.GetValues(typeof(Contraband)).Length)
+                for (int j = 0; j < (int)System.Enum.GetValues(typeof(Contraband)).Length; j++)
+                    if (!AllContraband.Contains((Contraband)j)) AllContraband.Add((Contraband)j);
 
-            AllContraband.Add(toAdd);
+            if (AllContraband.Count != (int)System.Enum.GetValues(typeof(Contraband)).Length) AllContraband.Add(toAdd);
         }
+
+        AllContraband.Shuffle();
 
         maxCapacityTemp = 1 + Mathf.FloorToInt(level * IllealListLevelModifier);
         roof = (maxCapacityTemp < Mathf.FloorToInt(0.16f * AllContraband.Count))
@@ -111,7 +118,7 @@ public class LegalManager : Singleton<LegalManager>
 
         for (int i = 0; i < roof; i++)
         {
-            IllegalContraband.Add(AllContraband[i]);            
+            IllegalContraband.Add(AllContraband[i]);
         }
 
         int floor = roof;
@@ -138,7 +145,7 @@ public class LegalManager : Singleton<LegalManager>
         maxCapacityTemp = 1 + Mathf.FloorToInt(level * ZelilandListLevelModifier);
         roof = (maxCapacityTemp < Mathf.FloorToInt(0.16f * AllContraband.Count))
             ? maxCapacityTemp : Mathf.FloorToInt(0.16f * AllContraband.Count);
-        
+
         for (int i = floor; i < floor + roof; i++)
         {
             ToZeliland.Add(AllContraband[i]);
@@ -148,10 +155,27 @@ public class LegalManager : Singleton<LegalManager>
         maxCapacityTemp = 1 + Mathf.FloorToInt(level * WouffiaListLevelModifier);
         roof = (maxCapacityTemp < Mathf.FloorToInt(0.16f * AllContraband.Count))
             ? maxCapacityTemp : Mathf.FloorToInt(0.16f * AllContraband.Count);
-        
+
         for (int i = floor; i < floor + roof; i++)
         {
             ToWouffia.Add(AllContraband[i]);
+        }
+    }
+}
+
+public static class ExtensionMethods
+{
+    public static void Shuffle<T>(this IList<T> list)
+    {
+        int n = list.Count;
+        System.Random rnd = new System.Random();
+        while (n > 1)
+        {
+            int k = (rnd.Next(0, n) % n);
+            n--;
+            T value = list[k];
+            list[k] = list[n];
+            list[n] = value;
         }
     }
 }
