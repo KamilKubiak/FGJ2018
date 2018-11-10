@@ -82,7 +82,7 @@ Material:
     - _ZWrite: 1
     - __dirty: 1
     - _fresnel_bias: 0
-    - _fresnel_mul: 0.77
+    - _fresnel_mul: 0.855
     - _fresnel_power: 5.1
     - _fresnel_scale: 0.8
     - _speed: 1
