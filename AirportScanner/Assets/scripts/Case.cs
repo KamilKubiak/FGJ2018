@@ -53,7 +53,7 @@ public class Case : MonoBehaviour {
                 Debug.Log(childMesh.transform.name);
                 if(!rend.bounds.ContainBounds(childMesh.bounds))
                 {
-                    obj.transform.localPosition = obj.transform.parent.position * -1;
+                    obj.transform.position = obj.transform.parent.parent.position;
                 }
             }
         }
