@@ -110,9 +110,5 @@ public class Waypoint : MonoBehaviour
 
     public Vector3 WaypointPosition { get { return waypoint.transform.position; } }
 
-    private void Update()
-    {
-        Debug.Log(transform.name + " is occupied " + Physics.CheckCapsule(transform.position, transform.position + Vector3.up, 1, caseMask));
-    }
 
 }

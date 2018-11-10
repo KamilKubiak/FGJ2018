@@ -179,4 +179,10 @@ public static class ExtensionMethods
             list[n] = value;
         }
     }
+
+
+        public static bool ContainBounds(this Bounds bounds, Bounds target)
+        {
+            return bounds.Contains(target.min) && bounds.Contains(target.max);
+        }
 }

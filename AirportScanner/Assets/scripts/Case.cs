@@ -14,8 +14,9 @@ public class Case : MonoBehaviour {
     Path currentPath;
     Waypoint nextWaypoint;
     public static bool CaseHeld;
-    Vector3 LiftedPosition = new Vector3(0, 3, 0);
+    Vector3 LiftedPosition = new Vector3(10, -0.5f, 14.5f);
     float speed = 0.5f;
+    private MeshRenderer rend;
 
     public Path CurrentPath
     {
@@ -31,12 +32,30 @@ public class Case : MonoBehaviour {
     }
 
     public void SetupContraband(Contraband[] contrabands)
-    {
+    {if (rend == null)
+        {
+            rend = GetComponentInChildren<MeshRenderer>();
+        }
         this.contrabands = new List<Contraband>(contrabands);
         for (int i = 0; i < contrabands.Length; i++)
         {
             spawnPositions[i].transform.localScale = new Vector3(scale / spawnPositions[i].parent.localScale.x, scale / spawnPositions[i].parent.localScale.y, scale / spawnPositions[i].parent.localScale.z);
-            if(SpawnManager.Instance.contrabandPrefabs.Count>(int)contrabands[i])Instantiate(SpawnManager.Instance.contrabandPrefabs[(int)contrabands[i]],spawnPositions[i]);
+            if (SpawnManager.Instance.contrabandPrefabs.Count > (int)contrabands[i])
+            {
+                var obj = Instantiate(SpawnManager.Instance.contrabandPrefabs[(int)contrabands[i]], spawnPositions[i]);
+
+                var childMesh = obj.GetComponentInChildren<MeshRenderer>();
+                if (childMesh == null)
+                {
+                    childMesh = obj.GetComponent<MeshRenderer>();
+                }
+
+                Debug.Log(childMesh.transform.name);
+                if(!rend.bounds.ContainBounds(childMesh.bounds))
+                {
+                    obj.transform.localPosition = obj.transform.parent.position * -1;
+                }
+            }
         }
 
     }
@@ -115,6 +134,11 @@ public class Case : MonoBehaviour {
             nextWaypoint = path.GetNextWaypoint(startingWaypoint);
         }
 
+    }
+
+    private void Start()
+    {
+        rend = GetComponentInChildren<MeshRenderer>();
     }
 
     private void Update()
