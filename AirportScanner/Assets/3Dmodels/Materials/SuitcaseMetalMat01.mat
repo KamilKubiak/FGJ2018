@@ -84,7 +84,7 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - __dirty: 1
+    - __dirty: 0
     - _fresnel_mul: 0.33
     - _speed: 1
     - _thicknes_mul: 2
