@@ -5,7 +5,8 @@ using UnityEngine;
 using System;
 
 [System.Serializable]
-public class Path{
+public class Path
+{
     public List<Waypoint> waypoints;
     public Waypoint GetNextWaypoint(Waypoint current)
     {
@@ -13,10 +14,11 @@ public class Path{
         {
             return waypoints.FirstOrDefault();
         }
-        var currentIndex = waypoints.IndexOf(current)+1;
+        var currentIndex = waypoints.IndexOf(current) + 1;
         return currentIndex < waypoints.Count ? waypoints[currentIndex] : null;
     }
 
+    public Destination destination;
 
     public bool IsWaypointOnPath(Waypoint wp)
     {
@@ -24,15 +26,20 @@ public class Path{
     }
 
 }
-public class Waypoint : MonoBehaviour {
+public class Waypoint : MonoBehaviour
+{
     int caseMask;
     public MeshRenderer meshRend;
 
-    Dictionary<Material,Color> defaultColors;
-    public bool Occupied{ get {
-            Debug.Log(transform.name + " is occupied " + Physics.Raycast(transform.position, Vector3.up, 1, caseMask));
-            return Physics.Raycast(transform.position, Vector3.up, 1f,caseMask); }}
-
+    Dictionary<Material, Color> defaultColors;
+    public bool Occupied
+    {
+        get
+        {
+            Debug.Log(transform.name + " is occupied " + Physics.CheckCapsule(transform.position, transform.position + Vector3.up, .5f, caseMask));
+            return Physics.CheckCapsule(transform.position, transform.position + Vector3.up, .5f, caseMask);
+        }
+    }
 
     private void Awake()
     {
@@ -53,9 +60,9 @@ public class Waypoint : MonoBehaviour {
     public static event WaypointAction WaypointClicked;
     public float pathingTolerance = 0.1f;
 
-    public bool MatchingPosition( Vector3 position)
+    public bool MatchingPosition(Vector3 position)
     {
-        return Vector3.Distance(WaypointPosition,position) <= pathingTolerance;
+        return Vector3.Distance(WaypointPosition, position) <= pathingTolerance;
     }
 
     internal void IndicateOccupiedWaypoint()
@@ -95,13 +102,17 @@ public class Waypoint : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        if (WaypointClicked!=null)
+        if (WaypointClicked != null)
         {
             WaypointClicked(this);
         }
     }
 
-    public Vector3 WaypointPosition { get { return waypoint.transform.position; }}
+    public Vector3 WaypointPosition { get { return waypoint.transform.position; } }
 
+    private void Update()
+    {
+        Debug.Log(transform.name + " is occupied " + Physics.CheckCapsule(transform.position, transform.position + Vector3.up, 1, caseMask));
+    }
 
 }

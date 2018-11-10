@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Case : MonoBehaviour {
 
+    public delegate void CaseActions(Contraband[] contrabandHeld, Case target);
+    public event CaseActions CaseDestroyed;
+    public event CaseActions CaseSent;
+    public Transform[] spawnPositions;
 
+    List<Contraband> contrabands;
 
     Path currentPath;
     Waypoint nextWaypoint;
@@ -25,7 +30,16 @@ public class Case : MonoBehaviour {
         }
     }
 
+    public void SetupContraband(Contraband[] contrabands)
+    {
+        this.contrabands = new List<Contraband>(contrabands);
+        for (int i = 0; i < contrabands.Length; i++)
+        {
+            spawnPositions[i].transform.localScale = new Vector3( 1/spawnPositions[i].parent.localScale.x, 1/spawnPositions[i].parent.localScale.y, 1/spawnPositions[i].parent.localScale.z);
+            Instantiate(SpawnManager.Instance.contrabandPrefabs[(int)contrabands[i]],spawnPositions[i]);
+        }
 
+    }
 
     private void OnMouseDown()
     {
@@ -36,7 +50,21 @@ public class Case : MonoBehaviour {
         CaseHeld = true;
         LiftFromConveyor();
         Waypoint.WaypointClicked += Waypoint_WaypointClicked;
+        ContrabandTrash.OnTrashClicked+= ContrabandTrash_OnTrashClicked;
     }
+
+    void ContrabandTrash_OnTrashClicked()
+    {
+        Waypoint.WaypointClicked -= Waypoint_WaypointClicked;
+        CaseHeld = false;
+        ContrabandTrash.OnTrashClicked -= ContrabandTrash_OnTrashClicked;
+        if (CaseDestroyed !=null)
+        {
+            CaseDestroyed(contrabands.ToArray(),this);
+        }
+        Destroy(gameObject);    
+    }
+
 
     private void LiftFromConveyor()
     {
@@ -54,6 +82,7 @@ public class Case : MonoBehaviour {
                 CaseHeld = false;
                 var path = WaypointManager.Instance.FindWaypointPath(wp);
                 PlaceCaseOnPath(path, wp);
+                ContrabandTrash.OnTrashClicked -= ContrabandTrash_OnTrashClicked;
                 Waypoint.WaypointClicked -= Waypoint_WaypointClicked;
             }
             else
@@ -94,6 +123,12 @@ public class Case : MonoBehaviour {
             if (nextWaypoint.MatchingPosition(transform.position))
             {
                 nextWaypoint = currentPath.GetNextWaypoint(nextWaypoint);
+                if (nextWaypoint == null )
+                {
+                    if(CaseSent != null)
+                    CaseSent(contrabands.ToArray(), this);
+                    Destroy(gameObject);
+                }
             }
         }
     }

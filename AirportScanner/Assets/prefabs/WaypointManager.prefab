@@ -57,10 +57,18 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
+    destination: 0
   - waypoints:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
+    destination: 0
+  - waypoints:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    destination: 0
   casePrefab: {fileID: 114947694256174182, guid: 335624478614945ec99c3c6a1aae54a4,
     type: 2}
