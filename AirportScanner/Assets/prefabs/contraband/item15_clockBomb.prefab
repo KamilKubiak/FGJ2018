@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4288259330540576}
   - component: {fileID: 33057027693794378}
   - component: {fileID: 23461188675111438}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: item15_clockBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}

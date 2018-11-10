@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4843954990686484}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Socket (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4169511685727998}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Socket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,8 @@ GameObject:
   - component: {fileID: 4018589827572840}
   - component: {fileID: 33717155108554132}
   - component: {fileID: 23098024546865556}
-  m_Layer: 9
+  - component: {fileID: 64078446599224770}
+  m_Layer: 8
   m_Name: Suitcase01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,6 +190,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &64078446599224770
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1942266128647954}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 90427a1b067e298449ff7c79d9a3bb55, type: 3}
 --- !u!114 &114276593828280264
 MonoBehaviour:
   m_ObjectHideFlags: 1

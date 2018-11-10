@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4272083528862590}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Socket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4699363632867136}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Socket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 33961319767969874}
   - component: {fileID: 23049505673097526}
   - component: {fileID: 64986534834518970}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: package01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4618737915106580}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Socket
   m_TagString: Untagged
   m_Icon: {fileID: 0}

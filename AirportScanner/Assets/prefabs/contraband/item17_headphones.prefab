@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4295678151502532}
   - component: {fileID: 33719287849508092}
   - component: {fileID: 23279000277197908}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: item17_headphones
   m_TagString: Untagged
   m_Icon: {fileID: 0}

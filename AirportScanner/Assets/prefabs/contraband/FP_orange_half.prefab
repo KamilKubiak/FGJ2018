@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4694178102209276}
   - component: {fileID: 33115655586282136}
   - component: {fileID: 23181078972954984}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FP_orange_half
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4252709749581302}
   - component: {fileID: 33858571788514730}
   - component: {fileID: 23619490891015264}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FP_watermelon_slice
   m_TagString: Untagged
   m_Icon: {fileID: 0}

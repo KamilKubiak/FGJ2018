@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4772543924752954}
   - component: {fileID: 33788967870748536}
   - component: {fileID: 23386015371751186}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: item09_wrench
   m_TagString: Untagged
   m_Icon: {fileID: 0}
