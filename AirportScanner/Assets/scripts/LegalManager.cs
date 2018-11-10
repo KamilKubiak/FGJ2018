@@ -56,6 +56,11 @@ public enum Contraband
     ZlotoIDiamenty
 }
 
+public enum Destinations
+{
+    destinationOne, destinationTwo, destinationThree, destinationFour
+}
+
 public class LegalManager : Singleton<LegalManager>
 {
 

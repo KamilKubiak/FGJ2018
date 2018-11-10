@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Case : MonoBehaviour {
 
+    public delegate void CaseActions(Contraband[] contrabandHeld, Case target);
+    public event CaseActions CaseDestroyed;
+    public event CaseActions CaseSent;
+    public Transform[] spawnPositions;
 
+    List<Contraband> contrabands;
 
     Path currentPath;
     Waypoint nextWaypoint;
@@ -25,7 +30,15 @@ public class Case : MonoBehaviour {
         }
     }
 
+    public void SetupContraband(Contraband[] contrabands)
+    {
+        this.contrabands = new List<Contraband>(contrabands);
+        for (int i = 0; i < contrabands.Length; i++)
+        {
+            Instantiate(SpawnManager.Instance.contrabandPrefabs[(int)contrabands[i]],spawnPositions[i]);
+        }
 
+    }
 
     private void OnMouseDown()
     {
@@ -36,7 +49,7 @@ public class Case : MonoBehaviour {
         CaseHeld = true;
         LiftFromConveyor();
         Waypoint.WaypointClicked += Waypoint_WaypointClicked;
-        ContrabandTrash.OnTrashClicked+= ContrabandTrash_OnTrashClicked ;
+        ContrabandTrash.OnTrashClicked+= ContrabandTrash_OnTrashClicked;
     }
 
     void ContrabandTrash_OnTrashClicked()
@@ -44,6 +57,10 @@ public class Case : MonoBehaviour {
         Waypoint.WaypointClicked -= Waypoint_WaypointClicked;
         CaseHeld = false;
         ContrabandTrash.OnTrashClicked -= ContrabandTrash_OnTrashClicked;
+        if (CaseDestroyed !=null)
+        {
+            CaseDestroyed(contrabands.ToArray(),this);
+        }
         Destroy(gameObject);    
     }
 
@@ -105,6 +122,10 @@ public class Case : MonoBehaviour {
             if (nextWaypoint.MatchingPosition(transform.position))
             {
                 nextWaypoint = currentPath.GetNextWaypoint(nextWaypoint);
+                if (nextWaypoint == null)
+                {
+                    CaseSent(contrabands.ToArray(), this);
+                }
             }
         }
     }
