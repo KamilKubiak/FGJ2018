@@ -96,12 +96,12 @@ public class LegalManager : Singleton<LegalManager>
             if (AllContraband.Count == (int)System.Enum.GetValues(typeof(Contraband)).Length) break;
 
             Contraband toAdd = (Contraband)Random.Range
-                (0, (int)System.Enum.GetValues(typeof(Contraband)).Length - 1);
+                (0, (int)System.Enum.GetValues(typeof(Contraband)).Length);
 
             if (AllContraband.Count + 1 < (int)System.Enum.GetValues(typeof(Contraband)).Length)
                 while (AllContraband.Contains(toAdd))
                 {
-                    toAdd = (Contraband)Random.Range(0, (int)System.Enum.GetValues(typeof(Contraband)).Length - 1);
+                    toAdd = (Contraband)Random.Range(0, (int)System.Enum.GetValues(typeof(Contraband)).Length);
                 }
             else if (AllContraband.Count + 1 == (int)System.Enum.GetValues(typeof(Contraband)).Length)
                 for (int j = 0; j < (int)System.Enum.GetValues(typeof(Contraband)).Length; j++)

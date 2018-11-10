@@ -5,8 +5,8 @@ using UnityEngine;
 public class Case : MonoBehaviour {
 
     public delegate void CaseActions(Contraband[] contrabandHeld, Case target);
-    public event CaseActions CaseDestroyed;
-    public event CaseActions CaseSent;
+    public static event CaseActions CaseDestroyed;
+    public static event CaseActions CaseSent;
     public Transform[] spawnPositions;
     float scale = 1;
     List<Contraband> contrabands;
