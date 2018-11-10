@@ -36,17 +36,7 @@ public class Case : MonoBehaviour {
         CaseHeld = true;
         LiftFromConveyor();
         Waypoint.WaypointClicked += Waypoint_WaypointClicked;
-        ContrabandTrash.OnTrashClicked+= ContrabandTrash_OnTrashClicked ;
     }
-
-    void ContrabandTrash_OnTrashClicked()
-    {
-        Waypoint.WaypointClicked -= Waypoint_WaypointClicked;
-        CaseHeld = false;
-        ContrabandTrash.OnTrashClicked -= ContrabandTrash_OnTrashClicked;
-        Destroy(gameObject);    
-    }
-
 
     private void LiftFromConveyor()
     {
@@ -64,7 +54,6 @@ public class Case : MonoBehaviour {
                 CaseHeld = false;
                 var path = WaypointManager.Instance.FindWaypointPath(wp);
                 PlaceCaseOnPath(path, wp);
-                ContrabandTrash.OnTrashClicked -= ContrabandTrash_OnTrashClicked;
                 Waypoint.WaypointClicked -= Waypoint_WaypointClicked;
             }
             else
