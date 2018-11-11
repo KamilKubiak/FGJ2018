@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class Case : MonoBehaviour
     public static event CaseActions CaseSent;
     public Transform[] spawnPositions;
     float scale = 1;
+
     List<Contraband> contrabands;
 
     Path currentPath;
@@ -94,7 +96,18 @@ public class Case : MonoBehaviour
     {
         CurrentPath = null;
         nextWaypoint = null;
-        transform.position = LiftedPosition;
+        StartCoroutine(LiftObject());
+    }
+
+    private IEnumerator LiftObject()
+    {
+        float timer = 0;
+        while(timer<.5f)
+        {
+            timer += Time.deltaTime;
+            transform.Translate(transform.up * 3 *Time.deltaTime);
+            yield return null;
+        }
     }
 
     void Waypoint_WaypointClicked(Waypoint wp)
