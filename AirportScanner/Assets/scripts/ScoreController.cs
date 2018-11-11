@@ -7,6 +7,7 @@ public class ScoreController : Singleton<ScoreController>
     public delegate void ScoringActions();
     public static event ScoringActions ScoreAdded;
     public static event ScoringActions ScoreSubstracted;
+    public static event ScoringActions GameOver;
 
     public XrayControler xControl;
 
@@ -18,7 +19,7 @@ public class ScoreController : Singleton<ScoreController>
     private void Start()
     {
         Case.CaseSent += OnCaseSent;
-        Case.CaseDestroyed += OnCaseDestroyed;        
+        Case.CaseDestroyed += OnCaseDestroyed;
     }
 
     void OnCaseSent(Contraband[] contrabandHeld, Case target)
@@ -113,6 +114,9 @@ public class ScoreController : Singleton<ScoreController>
 
     void CheckCases()
     {
-        if (CasesLeft <= 0) SpawnManager.Instance.StartLevel();
+        if (CasesLeft <= 0)
+            if (Life > 0) SpawnManager.Instance.StartLevel();
+            else
+                GameOver();
     }
 }
