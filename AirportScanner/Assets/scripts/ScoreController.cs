@@ -9,13 +9,14 @@ public class ScoreController : Singleton<ScoreController>
     public static event ScoringActions ScoreSubstracted;
 
     public int CasesLeft;
-    public int Score;
+    public int Score = 0;
+    public int Life = 100;
     int scoreMultiplier = 1;
 
     private void Start()
     {
         Case.CaseSent += OnCaseSent;
-        Case.CaseDestroyed += OnCaseDestroyed;
+        Case.CaseDestroyed += OnCaseDestroyed;        
     }
 
     void OnCaseSent(Contraband[] contrabandHeld, Case target)
@@ -85,18 +86,24 @@ public class ScoreController : Singleton<ScoreController>
 
     void AddPoints(int amount)
     {
+        Life += amount;
+        if (Life >= 100) Life = 100;
         scoreMultiplier++;
         if (scoreMultiplier > 15) scoreMultiplier = 15;
         Score += amount;
         if (ScoreAdded != null) ScoreAdded();
+        UiZonesManager.Instance.RefreshText();
         CheckCases();
     }
 
     void SubstractPoints(int amount)
     {
+        Life -= 25;
+        if (Life <= 0) { Life = 0; }
         scoreMultiplier = 1;
         Score -= amount;
         if (ScoreSubstracted != null) ScoreSubstracted();
+        UiZonesManager.Instance.RefreshText();
         CheckCases();
     }
 

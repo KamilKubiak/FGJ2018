@@ -13,6 +13,7 @@ public class SpawnManager : Singleton<SpawnManager> {
     private void Start()
     {
         StartLevel();
+        UiZonesManager.Instance.RefreshText();
     }
     public void StartLevel()
     {
