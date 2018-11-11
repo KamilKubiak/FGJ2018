@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine.UI;
 
 //[ExecuteInEditMode]
@@ -19,6 +21,7 @@ public class XrayControler : MonoBehaviour {
     private RenderTexture xrayTar;
     public float xrayZoom = 2.0f;
 
+#if UNITY_EDITOR
     public void XrayPreview()
     {
         if (replacementShader != null)
@@ -30,6 +33,7 @@ public class XrayControler : MonoBehaviour {
         this.GetComponent<Camera>().ResetReplacementShader();
     }
     // Use this for initialization
+#endif
     void OnEnable () {
         
 
