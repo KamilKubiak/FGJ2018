@@ -20,8 +20,17 @@ public class XrayControler : MonoBehaviour {
     public static bool ShowXray;
     private RenderTexture xrayTar;
     public float xrayZoom = 2.0f;
+    public float greenStackAdd = 0.25f;
+    public float redStackAdd = 0.50f;
+    public float greenStackSubtractPerSec =  0.1f;
+    public float redStackSubtractPerSec = 0.25f;
 
+<<<<<<< HEAD
+    float greenStack = 0.0f;
+    float redStack = 0.0f;
+=======
 #if UNITY_EDITOR
+>>>>>>> ce8a5a9509d2599a79cbe6af77f9e680908901eb
     public void XrayPreview()
     {
         if (replacementShader != null)
@@ -86,6 +95,25 @@ public class XrayControler : MonoBehaviour {
         if (Input.GetMouseButtonUp(1)) ShowXray = false;
         if (PostProcessMat != null)
         {
+            if (Input.GetMouseButtonDown(0)) // left click
+            {
+                greenStack += greenStackAdd;
+                redStack = 0.0f;
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                redStack += redStackAdd;
+                greenStack = 0.0f;
+            }
+
+            greenStack -= greenStackSubtractPerSec * Time.deltaTime;
+            redStack -= redStackSubtractPerSec * Time.deltaTime;
+
+            redStack = Mathf.Clamp01(redStack);
+            greenStack = Mathf.Clamp01(greenStack);
+
+
 
             Vector2 mousePos = new Vector2(Camera.main.ScreenToViewportPoint(Input.mousePosition).x, Camera.main.ScreenToViewportPoint(Input.mousePosition).y );
             Vector2 mousePosFromCenter = (mousePos * 2.0f) - new Vector2(1.0f, 1.0f);
@@ -95,18 +123,28 @@ public class XrayControler : MonoBehaviour {
 
             Debug.Log(mousePos.x);
 
-            Vector4 MouseCoords = new Vector4(mousePos.x*(normlizedSize.x), mousePos.y * (normlizedSize.y), 0.0f, 0.0f);
+            Vector4 MouseCoords = new Vector4(mousePos.x*(normlizedSize.x), mousePos.y * (normlizedSize.y), redStack, greenStack);
             PostProcessMat.SetVector("_MoouseCoords", MouseCoords);
 
             PostProcessMat.SetTextureOffset("_xrayRT", new Vector2((1.0f - 1.0f / xrayZoom) * mousePos.x, (1.0f - 1.0f / xrayZoom) * mousePos.y));
+
+
         }
-            
+
+
     }
 
     void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
-        if(PostProcessMat!=null&&ShowXray)
+        if (PostProcessMat != null)
+        {
+            if (ShowXray)
+                PostProcessMat.SetFloat("_scannerOpacity", 1.0f);
+            else
+                PostProcessMat.SetFloat("_scannerOpacity", 0.0f);
+
             Graphics.Blit(src, dest, PostProcessMat);
+        }
         else
             Graphics.Blit(src, dest);
     }

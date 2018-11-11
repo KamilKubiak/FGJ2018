@@ -16,7 +16,7 @@ public class Case : MonoBehaviour
     Waypoint nextWaypoint;
     public static bool CaseHeld;
     Vector3 LiftedPosition = new Vector3(10, -0.5f, 14.5f);
-    float speed = .5f;
+    float speed = 1f;
     float addSpeed;
     private MeshRenderer rend;
 
