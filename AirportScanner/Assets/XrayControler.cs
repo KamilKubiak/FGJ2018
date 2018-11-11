@@ -50,7 +50,7 @@ public class XrayControler : MonoBehaviour {
 
     private void Start()
     {
-        xrayTar = new RenderTexture((int)(Camera.main.pixelWidth * xrayZoom), (int)(Camera.main.pixelHeight * xrayZoom), 24);
+        xrayTar = new RenderTexture((int)(Camera.main.pixelWidth * xrayZoom*0.5f), (int)(Camera.main.pixelHeight * xrayZoom * 0.5f), 24);
 
         xrayCamera.targetTexture = xrayTar;
 
@@ -107,10 +107,10 @@ public class XrayControler : MonoBehaviour {
         if (Input.GetMouseButtonUp(1)) ShowXray = false;
         if (PostProcessMat != null)
         {
-            if (Input.GetMouseButtonDown(0))
-                greenEffectAdd();
-            if (Input.GetMouseButtonDown(1))
-                redEffectAdd();
+            //if (Input.GetMouseButtonDown(0))
+            //    greenEffectAdd();
+            //if (Input.GetMouseButtonDown(1))
+            //    redEffectAdd();
 
             greenStack -= greenStackSubtractPerSec * Time.deltaTime;
             redStack -= redStackSubtractPerSec * Time.deltaTime;
@@ -126,7 +126,7 @@ public class XrayControler : MonoBehaviour {
             float offsetX = normalizedScale.x * mousePosFromCenter.x;
             float offsetY = normalizedScale.y * mousePosFromCenter.y;
 
-            Debug.Log(mousePos.x);
+           // Debug.Log(mousePos.x);
 
             Vector4 MouseCoords = new Vector4(mousePos.x*(normlizedSize.x), mousePos.y * (normlizedSize.y), Mathf.Clamp01(greenStack), Mathf.Clamp01(redStack));
             PostProcessMat.SetVector("_MoouseCoords", MouseCoords);

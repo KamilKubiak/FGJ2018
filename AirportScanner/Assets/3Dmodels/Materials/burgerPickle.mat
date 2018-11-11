@@ -83,7 +83,7 @@ Material:
     - _fresnel_bias: 0
     - _fresnel_mul: 0.33
     - _fresnel_power: 5.1
-    - _fresnel_scale: 0.8
+    - _fresnel_scale: -2.81
     - _speed: 1
     - _thicknes_mul: 0.61
     m_Colors:

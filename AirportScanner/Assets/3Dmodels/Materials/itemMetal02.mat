@@ -80,12 +80,12 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _fresnel_bias: 0
-    - _fresnel_mul: 0.33
-    - _fresnel_power: 5.1
-    - _fresnel_scale: 0.8
+    - _fresnel_bias: -0
+    - _fresnel_mul: 1.22
+    - _fresnel_power: 6.48
+    - _fresnel_scale: 48.96
     - _speed: 1
-    - _thicknes_mul: 0.68
+    - _thicknes_mul: 0
     m_Colors:
     - _Color: {r: 0.15983027, g: 0.30882353, b: 0.14759947, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}

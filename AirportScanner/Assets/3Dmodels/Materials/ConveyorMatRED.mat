@@ -81,10 +81,10 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     - __dirty: 0
-    - _fresnel_mul: 0.5
+    - _fresnel_mul: 1.34
     - _speed: 1
-    - _thicknes_mul: 0.535
+    - _thicknes_mul: 0.29
     m_Colors:
-    - _Color: {r: 0.8000001, g: 0.033863977, b: 0.033863977, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
-    - _XrayColor: {r: 0.100346014, g: 0.16828546, b: 0.2352941, a: 0.178}
+    - _XrayColor: {r: 0.34050605, g: 0.6041134, b: 0.6911765, a: 0.853}

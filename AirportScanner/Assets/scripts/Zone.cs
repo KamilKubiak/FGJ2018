@@ -12,7 +12,7 @@ public class Zone : MonoBehaviour
     public void SetupIcons()
     {
         List<Sprite> newIcons = new List<Sprite>();
-        float size = 40;
+        float size = 80;
 
         List<Contraband> temp = new List<Contraband>();
 

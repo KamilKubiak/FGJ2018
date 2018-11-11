@@ -80,13 +80,13 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _fresnel_bias: 0
-    - _fresnel_mul: 0.33
-    - _fresnel_power: 5.1
-    - _fresnel_scale: 0.8
+    - _fresnel_bias: 4.89
+    - _fresnel_mul: 0.89
+    - _fresnel_power: 1.01
+    - _fresnel_scale: 0.61
     - _speed: 1
-    - _thicknes_mul: 0.87
+    - _thicknes_mul: 0
     m_Colors:
     - _Color: {r: 0.7448013, g: 0.8000001, b: 0.4257647, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
-    - _XrayColor: {r: 0.2794118, g: 0.2480984, b: 0.1458694, a: 0.522}
+    - _XrayColor: {r: 0.44852942, g: 0.37429008, b: 0.13192041, a: 0.522}

@@ -82,10 +82,10 @@ Material:
     - _ZWrite: 1
     - _fresnel_bias: 0
     - _fresnel_mul: 0.937
-    - _fresnel_power: 5.1
-    - _fresnel_scale: 0.17
+    - _fresnel_power: 2.53
+    - _fresnel_scale: 0.13
     - _speed: 1
-    - _thicknes_mul: 0.88
+    - _thicknes_mul: 0
     m_Colors:
     - _Color: {r: 0.15232453, g: 0.060366258, b: 0.0206385, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}

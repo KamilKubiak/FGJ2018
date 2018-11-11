@@ -82,11 +82,11 @@ Material:
     - _ZWrite: 1
     - _fresnel_bias: 0
     - _fresnel_mul: 0.832
-    - _fresnel_power: 5.1
-    - _fresnel_scale: 0.8
+    - _fresnel_power: 2.47
+    - _fresnel_scale: 0.24
     - _speed: 1
-    - _thicknes_mul: 0.46
+    - _thicknes_mul: 0
     m_Colors:
     - _Color: {r: 0.8000001, g: 0.4209066, b: 0.012155121, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
-    - _XrayColor: {r: 0.42647058, g: 0.39126298, b: 0.19442041, a: 0.522}
+    - _XrayColor: {r: 0.8602941, g: 0.75664, b: 0.17711939, a: 0.609}

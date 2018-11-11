@@ -7,7 +7,9 @@ public class ScoreController : Singleton<ScoreController>
     public delegate void ScoringActions();
     public static event ScoringActions ScoreAdded;
     public static event ScoringActions ScoreSubstracted;
-    public static event ScoringActions GameOver;
+    public GameObject endBoard;
+    public UnityEngine.UI.Text endBoardScore;
+    // public static event ScoringActions GameOver;
 
     public XrayControler xControl;
 
@@ -112,11 +114,39 @@ public class ScoreController : Singleton<ScoreController>
         CheckCases();
     }
 
+    void GameOver()
+    {
+        GameObject[] objectsToDelete = GameObject.FindGameObjectsWithTag("package");
+        foreach (GameObject obj in objectsToDelete)
+        {
+            Destroy(obj);
+        }
+
+        Debug.Log("you suck");
+        endBoard.SetActive(true);
+        endBoardScore.text = Score.ToString();
+
+    }
+
+    public void restart()
+    {
+        endBoard.SetActive(false);
+
+        SpawnManager.Instance.StartLevel();
+        Score = 0;
+        Life = 100;
+        scoreMultiplier = 1;
+        UiZonesManager.Instance.RefreshText();
+    }
+
     void CheckCases()
     {
-        if (CasesLeft <= 0)
-            if (Life > 0) SpawnManager.Instance.StartLevel();
-            else
+
+        if (CasesLeft <= 0) { SpawnManager.Instance.StartLevel(); }
+
+
+            if (Life <= 0) 
                 GameOver();
+
     }
 }
