@@ -61,7 +61,8 @@ public enum Destination
     Exinia,
     Ygrandia,
     Zeliland,
-    Wouffia
+    Wouffia,
+    Trash
 }
 
 public class LegalManager : Singleton<LegalManager>
