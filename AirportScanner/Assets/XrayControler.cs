@@ -25,12 +25,12 @@ public class XrayControler : MonoBehaviour {
     public float greenStackSubtractPerSec =  0.1f;
     public float redStackSubtractPerSec = 0.25f;
 
-<<<<<<< HEAD
+
     float greenStack = 0.0f;
     float redStack = 0.0f;
-=======
+
 #if UNITY_EDITOR
->>>>>>> ce8a5a9509d2599a79cbe6af77f9e680908901eb
+
     public void XrayPreview()
     {
         if (replacementShader != null)
