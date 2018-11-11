@@ -7,7 +7,7 @@ using UnityEditor;
 using UnityEngine.UI;
 
 //[ExecuteInEditMode]
-public class XrayControler : MonoBehaviour {
+public class XrayControlerMenu : MonoBehaviour {
 
     public Camera xrayCamera;
     public Shader replacementShader;
