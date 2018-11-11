@@ -13328,8 +13328,8 @@ MonoBehaviour:
   - {fileID: 114043841433496456, guid: 5dfa31acbcddc4735bf3fdc981c53ad3, type: 2}
   - {fileID: 114152123698742646, guid: 785ca1dcd451c4e738ad3aa0edbd07d3, type: 2}
   level: 0
-  casesPerLevel: 5
-  AccPerLevel: 0.1
+  casesPerLevel: 2
+  AccPerLevel: 0.05
 --- !u!4 &1904307981
 Transform:
   m_ObjectHideFlags: 0
