@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4491109255344968}
   - component: {fileID: 33624231529834198}
   - component: {fileID: 23590302832922728}
+  - component: {fileID: 114742973232201414}
   m_Layer: 9
   m_Name: item20_burger
   m_TagString: Untagged
@@ -35,8 +36,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1243614558151204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.37}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -85,3 +86,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1243614558151204}
   m_Mesh: {fileID: 4300000, guid: bd896235f5d236d4ea45482895662b18, type: 3}
+--- !u!114 &114742973232201414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1243614558151204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf04a712a46a943bab3ba254b87d8a89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scale: 3

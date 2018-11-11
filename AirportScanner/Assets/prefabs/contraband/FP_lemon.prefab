@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4304304175807026}
   - component: {fileID: 33383190228366626}
   - component: {fileID: 23573341121350966}
+  - component: {fileID: 114436951958547234}
   m_Layer: 9
   m_Name: FP_lemon
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1368337507088124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.21, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,3 +83,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1368337507088124}
   m_Mesh: {fileID: 4300012, guid: 2a32d6e5611429f499b439cf55f86ed4, type: 3}
+--- !u!114 &114436951958547234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368337507088124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf04a712a46a943bab3ba254b87d8a89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scale: 4
