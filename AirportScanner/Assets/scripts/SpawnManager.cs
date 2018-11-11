@@ -25,7 +25,7 @@ public class SpawnManager : Singleton<SpawnManager> {
     {
         var amountOfCases = Mathf.RoundToInt(10 + level * casesPerLevel);
         ScoreController.Instance.CasesLeft = amountOfCases;
-
+        var contraband = LegalManager.Instance.GetAllSendableElements();
         while (amountOfCases>0)
         {
             var path = WaypointManager.Instance.GetFreeStart();
@@ -36,7 +36,7 @@ public class SpawnManager : Singleton<SpawnManager> {
                 var slotCount = obj.spawnPositions.Length;
                 for (int i = 0; i < slotCount; i++)
                 {
-                    contrabands.Add(LegalManager.Instance.AllContraband[Random.Range(0, LegalManager.Instance.AllContraband.Count)]);
+                    contrabands.Add(LegalManager.Instance.AllContraband[Random.Range(0, contraband.Count)]);
                 }
                 obj.SetupContraband(contrabands.ToArray());
                 obj.CurrentPath = path;

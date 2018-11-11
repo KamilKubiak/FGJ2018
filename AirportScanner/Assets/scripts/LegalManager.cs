@@ -164,6 +164,32 @@ public class LegalManager : Singleton<LegalManager>
 
         UiZonesManager.Instance.RefreshZones();
     }
+
+    public List<Contraband> GetAllSendableElements()
+    {
+        var list = new List<Contraband>();
+
+foreach (var item in IllegalContraband)
+        {
+            list.Add(item);
+        }
+        foreach (var item in ToExinia)
+        {
+            list.Add(item);
+        }
+        foreach (var item in ToYgradnia)
+        {
+            list.Add(item);
+        }foreach (var item in ToZeliland)
+        {
+            list.Add(item);
+        }foreach (var item in ToWouffia)
+        {
+            list.Add(item);
+        }
+        return list;
+
+    }
 }
 
 public static class ExtensionMethods
