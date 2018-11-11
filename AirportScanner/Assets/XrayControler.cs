@@ -84,6 +84,18 @@ public class XrayControler : MonoBehaviour {
 
     }
 
+    public void greenEffectAdd()
+    {
+        greenStack += greenStackAdd;
+        redStack = 0.0f;
+    }
+
+    public void redEffectAdd()
+    {
+        redStack += redStackAdd;
+        greenStack = 0.0f;
+    }
+
     // Update is called once per frame
     void OnDestroy () {
         xrayCamera.ResetReplacementShader();
@@ -95,23 +107,16 @@ public class XrayControler : MonoBehaviour {
         if (Input.GetMouseButtonUp(1)) ShowXray = false;
         if (PostProcessMat != null)
         {
-            if (Input.GetMouseButtonDown(0)) // left click
-            {
-                greenStack += greenStackAdd;
-                redStack = 0.0f;
-            }
-
+            if (Input.GetMouseButtonDown(0))
+                greenEffectAdd();
             if (Input.GetMouseButtonDown(1))
-            {
-                redStack += redStackAdd;
-                greenStack = 0.0f;
-            }
+                redEffectAdd();
 
             greenStack -= greenStackSubtractPerSec * Time.deltaTime;
             redStack -= redStackSubtractPerSec * Time.deltaTime;
 
-            redStack = Mathf.Clamp01(redStack);
-            greenStack = Mathf.Clamp01(greenStack);
+            redStack = Mathf.Clamp(redStack,0.0f,2.0f);
+            greenStack = Mathf.Clamp(greenStack, 0.0f, 2.0f);
 
 
 
@@ -123,7 +128,7 @@ public class XrayControler : MonoBehaviour {
 
             Debug.Log(mousePos.x);
 
-            Vector4 MouseCoords = new Vector4(mousePos.x*(normlizedSize.x), mousePos.y * (normlizedSize.y), redStack, greenStack);
+            Vector4 MouseCoords = new Vector4(mousePos.x*(normlizedSize.x), mousePos.y * (normlizedSize.y), Mathf.Clamp01(greenStack), Mathf.Clamp01(redStack));
             PostProcessMat.SetVector("_MoouseCoords", MouseCoords);
 
             PostProcessMat.SetTextureOffset("_xrayRT", new Vector2((1.0f - 1.0f / xrayZoom) * mousePos.x, (1.0f - 1.0f / xrayZoom) * mousePos.y));

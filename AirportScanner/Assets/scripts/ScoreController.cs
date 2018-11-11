@@ -8,6 +8,8 @@ public class ScoreController : Singleton<ScoreController>
     public static event ScoringActions ScoreAdded;
     public static event ScoringActions ScoreSubstracted;
 
+    public XrayControler xControl;
+
     public int CasesLeft;
     public int Score = 0;
     public int Life = 100;
@@ -93,6 +95,7 @@ public class ScoreController : Singleton<ScoreController>
         Score += amount;
         if (ScoreAdded != null) ScoreAdded();
         UiZonesManager.Instance.RefreshText();
+        xControl.greenEffectAdd();
         CheckCases();
     }
 
@@ -104,6 +107,7 @@ public class ScoreController : Singleton<ScoreController>
         Score -= amount;
         if (ScoreSubstracted != null) ScoreSubstracted();
         UiZonesManager.Instance.RefreshText();
+        xControl.redEffectAdd();
         CheckCases();
     }
 

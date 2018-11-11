@@ -6,13 +6,13 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: xrayPostProcess
-  m_Shader: {fileID: 4800000, guid: 800966b49ed1aae4bac7d2c340b0a3b4, type: 3}
+  m_Name: xrayShader
+  m_Shader: {fileID: 4800000, guid: bfa189884bb0b6746a01b89527f98fb7, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -54,20 +54,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _texcoord:
-        m_Texture: {fileID: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 2800000, guid: 41c67c686a8113c4ba3d197c35236b60, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _xrayRT:
+    - _texcoord:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 0.25, y: 0.25}
-<<<<<<< HEAD
-        m_Offset: {x: 0.4116608, y: 0.96427166}
-=======
-        m_Offset: {x: 0.34838253, y: 0.81155777}
->>>>>>> ce8a5a9509d2599a79cbe6af77f9e680908901eb
-    - _zoomMask:
-        m_Texture: {fileID: 2800000, guid: 66e159d973998754c940e091ae8d9448, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -87,14 +79,10 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _scannerOpacity: 0
+    - __dirty: 1
+    - _fresnel_mul: 0
+    - _thicknes_mul: 1.33
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color0: {r: 0.03708909, g: 0.102941155, b: 0.06751727, a: 0.203}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-<<<<<<< HEAD
-    - _MoouseCoords: {r: 1.165, g: 2.0485415, b: 0, a: 0.83255225}
-    - _SizeOffset: {r: 2.1225, g: 1.5933334, b: 0.5, a: 0.5}
-=======
-    - _MoouseCoords: {r: 1.2321128, g: 2.1533332, b: 0, a: 0}
-    - _SizeOffset: {r: 2.6525, g: 1.99, b: 0.49999997, a: 0.5}
->>>>>>> ce8a5a9509d2599a79cbe6af77f9e680908901eb
