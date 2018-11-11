@@ -2630,8 +2630,8 @@ MonoBehaviour:
   xrayTarget: {fileID: 8400000, guid: 247333991b120d64085385a0971e58b6, type: 2}
   zoomTarget: {fileID: 2800000, guid: 66e159d973998754c940e091ae8d9448, type: 3}
   PostProcessMat: {fileID: 2100000, guid: fcb14280b54acd1418eea7ee9ff46bbf, type: 2}
-  ImageSize: {x: 400, y: 300}
-  xrayZoom: 4
+  ImageSize: {x: 200, y: 200}
+  xrayZoom: 3.5
 --- !u!1001 &530447485
 Prefab:
   m_ObjectHideFlags: 0
@@ -12247,7 +12247,6 @@ MonoBehaviour:
   - {fileID: 114152123698742646, guid: 785ca1dcd451c4e738ad3aa0edbd07d3, type: 2}
   level: 0
   casesPerLevel: 5
-  NewLevelReady: 0
 --- !u!4 &1904307981
 Transform:
   m_ObjectHideFlags: 0
