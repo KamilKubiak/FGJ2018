@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Case : MonoBehaviour {
+public class Case : MonoBehaviour
+{
 
     public delegate void CaseActions(Contraband[] contrabandHeld, Case target);
     public static event CaseActions CaseDestroyed;
@@ -15,7 +16,8 @@ public class Case : MonoBehaviour {
     Waypoint nextWaypoint;
     public static bool CaseHeld;
     Vector3 LiftedPosition = new Vector3(10, -0.5f, 14.5f);
-    float speed = 0.5f;
+    float speed = 1f;
+    float addSpeed;
     private MeshRenderer rend;
 
     public Path CurrentPath
@@ -32,7 +34,8 @@ public class Case : MonoBehaviour {
     }
 
     public void SetupContraband(Contraband[] contrabands)
-    {if (rend == null)
+    {
+        if (rend == null)
         {
             rend = GetComponentInChildren<MeshRenderer>();
         }
@@ -51,7 +54,7 @@ public class Case : MonoBehaviour {
                 }
 
                 Debug.Log(childMesh.transform.name);
-                if(!rend.bounds.ContainBounds(childMesh.bounds))
+                if (!rend.bounds.ContainBounds(childMesh.bounds))
                 {
                     obj.transform.position = obj.transform.parent.parent.position;
                 }
@@ -70,7 +73,7 @@ public class Case : MonoBehaviour {
         CaseHeld = true;
         LiftFromConveyor();
         Waypoint.WaypointClicked += Waypoint_WaypointClicked;
-        ContrabandTrash.OnTrashClicked+= ContrabandTrash_OnTrashClicked;
+        ContrabandTrash.OnTrashClicked += ContrabandTrash_OnTrashClicked;
     }
 
     void ContrabandTrash_OnTrashClicked()
@@ -79,11 +82,11 @@ public class Case : MonoBehaviour {
         CaseHeld = false;
         //XrayControler.ShowXray = true;
         ContrabandTrash.OnTrashClicked -= ContrabandTrash_OnTrashClicked;
-        if (CaseDestroyed !=null)
+        if (CaseDestroyed != null)
         {
-            CaseDestroyed(contrabands.ToArray(),this);
+            CaseDestroyed(contrabands.ToArray(), this);
         }
-        Destroy(gameObject);    
+        Destroy(gameObject);
     }
 
 
@@ -96,7 +99,7 @@ public class Case : MonoBehaviour {
 
     void Waypoint_WaypointClicked(Waypoint wp)
     {
-        if(wp != null)
+        if (wp != null)
         {
             if (!wp.Occupied)
             {
@@ -115,7 +118,7 @@ public class Case : MonoBehaviour {
 
     }
 
-    void PlaceCaseOnPath(Path path,Waypoint startingWaypoint = null)
+    void PlaceCaseOnPath(Path path, Waypoint startingWaypoint = null)
     {
         if (path == null)
         {
@@ -139,21 +142,22 @@ public class Case : MonoBehaviour {
     private void Start()
     {
         rend = GetComponentInChildren<MeshRenderer>();
+        addSpeed = SpawnManager.Instance.AccPerLevel * SpawnManager.Instance.level;
     }
 
     private void Update()
     {
-        if (currentPath !=null && nextWaypoint != null)
+        if (currentPath != null && nextWaypoint != null)
         {
 
-            transform.position = Vector3.MoveTowards(transform.position, nextWaypoint.WaypointPosition, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, nextWaypoint.WaypointPosition, (speed + addSpeed) * Time.deltaTime);
             if (nextWaypoint.MatchingPosition(transform.position))
             {
                 nextWaypoint = currentPath.GetNextWaypoint(nextWaypoint);
-                if (nextWaypoint == null )
+                if (nextWaypoint == null)
                 {
-                    if(CaseSent != null)
-                    CaseSent(contrabands.ToArray(), this);
+                    if (CaseSent != null)
+                        CaseSent(contrabands.ToArray(), this);
                     Destroy(gameObject);
                 }
             }

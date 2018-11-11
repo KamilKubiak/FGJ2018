@@ -12247,6 +12247,7 @@ MonoBehaviour:
   - {fileID: 114152123698742646, guid: 785ca1dcd451c4e738ad3aa0edbd07d3, type: 2}
   level: 0
   casesPerLevel: 5
+  AccPerLevel: 0.15
 --- !u!4 &1904307981
 Transform:
   m_ObjectHideFlags: 0

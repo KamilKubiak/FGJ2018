@@ -8,6 +8,8 @@ public class SpawnManager : Singleton<SpawnManager> {
     public List<Case> casePrefabs;
     public int level;
     public float casesPerLevel = 5;
+    public float AccPerLevel;
+
     private void Start()
     {
         StartLevel();
