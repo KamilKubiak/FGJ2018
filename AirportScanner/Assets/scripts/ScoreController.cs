@@ -132,11 +132,13 @@ public class ScoreController : Singleton<ScoreController>
     {
         endBoard.SetActive(false);
 
-        SpawnManager.Instance.StartLevel();
+
         Score = 0;
         Life = 100;
         scoreMultiplier = 1;
         UiZonesManager.Instance.RefreshText();
+        SpawnManager.Instance.level = 0;
+        SpawnManager.Instance.StartLevel();
     }
 
     void CheckCases()
