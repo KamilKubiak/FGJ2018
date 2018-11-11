@@ -89,6 +89,7 @@ public class ScoreController : Singleton<ScoreController>
         if (scoreMultiplier > 15) scoreMultiplier = 15;
         Score += amount;
         if (ScoreAdded != null) ScoreAdded();
+        CheckCases();
     }
 
     void SubstractPoints(int amount)
@@ -96,5 +97,11 @@ public class ScoreController : Singleton<ScoreController>
         scoreMultiplier = 1;
         Score -= amount;
         if (ScoreSubstracted != null) ScoreSubstracted();
+        CheckCases();
+    }
+
+    void CheckCases()
+    {
+        if (CasesLeft <= 0) SpawnManager.Instance.StartLevel();
     }
 }

@@ -15,7 +15,7 @@ public class XrayControler : MonoBehaviour {
     public Vector2 ImageSize;
     Vector2 normlizedSize;
     Vector2 normalizedScale;
-    public static bool ShowXray = true;
+    public static bool ShowXray;
     private RenderTexture xrayTar;
     public float xrayZoom = 2.0f;
 
@@ -78,6 +78,8 @@ public class XrayControler : MonoBehaviour {
 
     private void Update()
     {
+        if (Input.GetMouseButtonDown(1)) ShowXray = true;
+        if (Input.GetMouseButtonUp(1)) ShowXray = false;
         if (PostProcessMat != null)
         {
 

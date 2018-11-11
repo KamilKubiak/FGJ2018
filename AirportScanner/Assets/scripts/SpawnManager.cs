@@ -21,6 +21,7 @@ public class SpawnManager : Singleton<SpawnManager> {
     IEnumerator SpawnLevel(int level)
     {
         var amountOfCases = Mathf.RoundToInt(10 + level * casesPerLevel);
+        ScoreController.Instance.CasesLeft = amountOfCases;
 
         while (amountOfCases>0)
         {
@@ -49,7 +50,6 @@ public class SpawnManager : Singleton<SpawnManager> {
 
         }
         this.level++;
-        StartLevel();
     }
 
 }

@@ -1633,7 +1633,6 @@ GameObject:
   - component: {fileID: 334096929}
   - component: {fileID: 334096933}
   - component: {fileID: 334096932}
-  - component: {fileID: 334096931}
   - component: {fileID: 334096930}
   m_Layer: 0
   m_Name: Xray Camera
@@ -1689,13 +1688,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 85de75f75e56d0645a2ad4e9e0f041f4, type: 2}
---- !u!81 &334096931
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 334096928}
-  m_Enabled: 1
 --- !u!124 &334096932
 Behaviour:
   m_ObjectHideFlags: 0
@@ -7008,12 +7000,12 @@ MonoBehaviour:
   ToYgradnia: 
   ToZeliland: 
   ToWouffia: 
-  FullListLevelModifier: 0
-  IllealListLevelModifier: 0
-  ExiniaListLevelModifier: 0
-  YgrandiaListLevelModifier: 0
-  ZelilandListLevelModifier: 0
-  WouffiaListLevelModifier: 0
+  FullListLevelModifier: 4
+  IllealListLevelModifier: 1
+  ExiniaListLevelModifier: 2
+  YgrandiaListLevelModifier: 0.5
+  ZelilandListLevelModifier: 0.25
+  WouffiaListLevelModifier: 1
 --- !u!4 &1117674448
 Transform:
   m_ObjectHideFlags: 0
@@ -12255,6 +12247,7 @@ MonoBehaviour:
   - {fileID: 114152123698742646, guid: 785ca1dcd451c4e738ad3aa0edbd07d3, type: 2}
   level: 0
   casesPerLevel: 5
+  NewLevelReady: 0
 --- !u!4 &1904307981
 Transform:
   m_ObjectHideFlags: 0

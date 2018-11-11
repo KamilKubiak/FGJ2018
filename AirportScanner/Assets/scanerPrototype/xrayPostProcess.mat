@@ -61,7 +61,7 @@ Material:
     - _xrayRT:
         m_Texture: {fileID: 0}
         m_Scale: {x: 0.25, y: 0.25}
-        m_Offset: {x: 0.36107674, y: 0.7945545}
+        m_Offset: {x: -0.2374031, y: 0.57881135}
     - _zoomMask:
         m_Texture: {fileID: 2800000, guid: 66e159d973998754c940e091ae8d9448, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -86,5 +86,5 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MoouseCoords: {r: 1.945, g: 3.2099998, b: 0, a: 0}
-    - _SizeOffset: {r: 4.04, g: 3.03, b: 0.5, a: 0.5}
+    - _MoouseCoords: {r: -0.6125, g: 1.1190354, b: 0, a: 0}
+    - _SizeOffset: {r: 1.935, g: 1.45, b: 0.5, a: 0.5}
