@@ -162,6 +162,7 @@ public class LegalManager : Singleton<LegalManager>
             ToWouffia.Add(AllContraband[i]);
         }
 
+        UiZonesManager.Instance.RefreshZones();
     }
 }
 

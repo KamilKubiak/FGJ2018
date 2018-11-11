@@ -3,28 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UiZonesManager : MonoBehaviour {
+public class UiZonesManager : Singleton<UiZonesManager>
+{
 
-    public List<Image> allIcons;
+    public List<Sprite> allIcons;
+    public Zone[] Zones;
 
-    public Image SetUpSprite(Contraband cargo)
+    public Sprite SetUpSprite(Contraband cargo)
     {
         int index = (int)cargo;
         return allIcons[index];
     }
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-    public void setUpZoneSprite(Contraband cargo, Destination place, int spirteIndex)
+    public void RefreshZones()
     {
-
-
+        foreach (Zone z in Zones) z.SetupIcons();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

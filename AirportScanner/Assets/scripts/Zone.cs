@@ -5,30 +5,37 @@ using UnityEngine.UI;
 
 public class Zone : MonoBehaviour {
 
-    
-    public List<Sprite> TestNewSprites;
-   
+    public bool Horizontal;
+    public Destination DestRep;
 
-    //public void SetupIcons(List<Image> newIcons)
-    //{
-    //    if (newIcons != null)
-    //    {
-    //        Image[] actualIcons = this.GetComponentsInChildren<Image>();
-
-    //        foreach (Image icon in actualIcons)
-    //        {
-    //            Destroy(icon.gameObject);
-    //        }
-    //        for (int t = 0; t < newIcons.Count; t++)
-    //        {
-    //           // actualIcons.
-    //        }
-    //    }
-        
-    //}
-
-    public void SetupIcons(List<Sprite> newIcons, float size)
+    public void SetupIcons()
     {
+        List<Sprite> newIcons = new List<Sprite>();
+        float size = 40;
+
+        List<Contraband> temp = new List<Contraband>();
+
+        switch (DestRep)
+        {
+            case Destination.Exinia:
+                temp = LegalManager.Instance.ToExinia;
+                break;
+            case Destination.Ygrandia:
+                temp = LegalManager.Instance.ToYgradnia;
+                break;
+            case Destination.Zeliland:
+                temp = LegalManager.Instance.ToZeliland;
+                break;
+            case Destination.Wouffia:
+                temp = LegalManager.Instance.ToWouffia;
+                break;
+            case Destination.Trash:
+                temp = LegalManager.Instance.IllegalContraband;
+                break;
+        }
+
+        foreach (Contraband c in temp) newIcons.Add(UiZonesManager.Instance.SetUpSprite(c));
+
         if (newIcons != null)
         {
 
@@ -44,7 +51,6 @@ public class Zone : MonoBehaviour {
             Debug.Log(zonePositionInScreen);
 
             int row = 0;
-            int column = 0;
 
             for (int t = 0; t < newIcons.Count; t++)
             {
@@ -55,13 +61,13 @@ public class Zone : MonoBehaviour {
                 //RectT.anchoredPosition = new Vector2(size * 0.5f, size * 0.5f);
 
                 //float OffsetX = (float)((t % 2) * 2 - 1) * size * 0.5f;
-                //float OffsetY = (float)((row % 2) * 2 - 1) * size * 0.5f;
-
-                //float OffsetX = (float)((t % 2) * 2 - 1) * size * 0.5f;
                 int tMod = (t % 4);
-                float OffsetY = (float)(tMod) * size - (float)(newIcons.Count) * size * 0.5f + size * 0.5f;
+                float OffsetX = 0;
+                float OffsetY = 0;
+                if (Horizontal) OffsetX = (float)(tMod) * size - (float)(newIcons.Count) * size * 0.5f + size * 0.5f;
+                else OffsetY = (float)(tMod) * size - (float)(newIcons.Count) * size * 0.5f + size * 0.5f;
 
-                Vector2 offset = new Vector2(0.0f, OffsetY);
+                Vector2 offset = new Vector2(OffsetX, OffsetY);
                 RectT.anchoredPosition = zonePositionInScreen + offset;
                 //RectT.anchoredPosition =new Vector2( size * 0.5f, size * 0.5f);
                 RectT.sizeDelta = new Vector2(size, size);
@@ -78,10 +84,5 @@ public class Zone : MonoBehaviour {
         }
 
 
-    }
-
-    private void Start()
-    {
-    SetupIcons(TestNewSprites, 40.0f);
-    }
+    }    
 }
