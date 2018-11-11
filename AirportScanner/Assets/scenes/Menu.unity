@@ -4327,7 +4327,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Piotr Bu\u0142ak"
+  m_Text: Piotr Bulak
 --- !u!222 &689321615
 CanvasRenderer:
   m_ObjectHideFlags: 0
