@@ -58,7 +58,7 @@ public class Case : MonoBehaviour
                 Debug.Log(childMesh.transform.name);
                 if (!rend.bounds.ContainBounds(childMesh.bounds))
                 {
-                    obj.transform.position = obj.transform.parent.parent.position;
+                    obj.transform.position = obj.transform.parent.parent.position+new Vector3(UnityEngine.Random.Range(-0.03f,0.03f), UnityEngine.Random.Range(-0.03f, 0.03f), UnityEngine.Random.Range(-0.03f, 0.03f));
                 }
             }
         }
@@ -133,6 +133,7 @@ public class Case : MonoBehaviour
 
     void PlaceCaseOnPath(Path path, Waypoint startingWaypoint = null)
     {
+        StopAllCoroutines();
         if (path == null)
         {
 
